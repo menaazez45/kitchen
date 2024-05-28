@@ -19,6 +19,7 @@
             background-color: #f8b400;
             padding: 20px;
             text-align: center;
+            position: relative;
         }
         nav {
             display: flex;
@@ -51,14 +52,28 @@
             background-color: #ffffff;
             width: 400px;
         }
+        .share-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+     
     </style>
 </head>
-<header>
-    <h1>موقع مطبخ العيله</h1>
-</header>
 <body>
+    <header>
+        <h1>موقع مطبخ العيله</h1>
+        <button class="share-button" onclick="shareContent()">مشاركة</button>
+    </header>
     <nav>
-       <a href="حلويات.html" onclick="loadPage('حلويات.html')">حلويات</a>
+        <a href="حلويات.html" onclick="loadPage('حلويات.html')">حلويات</a>
         <a href="index.html" onclick="loadPage('index.html')">طبخ</a>
         <a href="عصائر.html" onclick="loadPage('عصائر.html')">عصائر</a>
     </nav>
@@ -68,5 +83,25 @@
     <iframe src="https://www.youtube.com/embed/h_hWhowM6uE?si=o6xaZRW88A6CTYK3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
     <iframe src="https://www.youtube.com/embed/_iMEVlq9tZo?si=pk_twvYTIiGEBC_M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
     <iframe src="https://www.youtube.com/embed/TSSPSXcwTrA?si=fnDUqLutbfOLZOAO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <script>
+        function shareContent() {
+            const shareData = {
+                title: 'موقع مطبخ العيله',
+                text: 'تعرف على أفضل وصفات الحلويات من موقع مطبخ العيله!',
+                url: 'https://kitchen-zeta.vercel.app/%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA.html'  // ضع الرابط الذي ترغب في مشاركته هنا
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).then(() => {
+                    console.log('Successful share');
+                }).catch((error) => {
+                    console.error('Error sharing:', error);
+                });
+            } else {
+                alert('المشاركة غير مدعومة في هذا المتصفح');
+            }
+        }
+    </script>
 </body>
 </html>

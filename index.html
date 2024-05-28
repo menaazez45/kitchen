@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>طبخ</title>
     <meta name="descripe" content="طبخ , ازاى تعملى حواوشى انضف واحلى من بتاع الشارع وبتركات خطيره ,اطعم طريقه لعمل البانيه والطعم خطيييير , الكريب الصيامى من غير لحمه ولا فراخ والطعم خطييير ,طريقه عمل البيتزا بالمشروم الصيامى خطيره , لو ولادك مش بيحبوا القلقاس تعالى اقولك على طريقه لو عملتيها هيطلبوه منك كل يوم وتحدى , بنص كيلو لحمه مفرومه هتعملى احلى روستو">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,6 +18,7 @@
             background-color: #f8b400;
             padding: 20px;
             text-align: center;
+            position: relative;
         }
         nav {
             display: flex;
@@ -51,14 +51,27 @@
             background-color: #ffffff;
             width: 400px;
         }
+        .share-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    
     </style>
 </head>
-<header>
-    <h1>موقع مطبخ العيله</h1>
-</header>
 <body>
+    <header>
+        <h1>موقع مطبخ العيله</h1>
+        <button class="share-button" onclick="shareContent()">مشاركة</button>
+    </header>
     <nav>
-        
         <a href="حلويات.html" onclick="loadPage('حلويات.html')">حلويات</a>
         <a href="index.html" onclick="loadPage('index.html')">طبخ</a>
         <a href="عصائر.html" onclick="loadPage('عصائر.html')">عصائر</a>
@@ -70,5 +83,25 @@
     <iframe src="https://www.youtube.com/embed/ZGzDvik0A8U?si=eUUQSfNb89VUEzJ-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
     <iframe src="https://www.youtube.com/embed/wGPm9CgBY2g?si=k4hhvDMvkswKck09" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
     <iframe src="https://www.youtube.com/embed/FBSrLHPt0i4?si=6CcIf_xHFCl58IGA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+    <script>
+        function shareContent() {
+            const shareData = {
+                title: 'موقع مطبخ العيله',
+                text: 'تعرف على أفضل وصفات الطبخ من موقع مطبخ العيله!',
+                url: 'https://kitchen-zeta.vercel.app/index.html'
+            };
+
+            try {
+                navigator.share(shareData).then(() => {
+                    console.log('Successful share');
+                }).catch((error) => {
+                    console.error('Error sharing:', error);
+                });
+            } catch (error) {
+                console.error('Share not supported on this browser:', error);
+            }
+        }
+    </script>
 </body>
 </html>
